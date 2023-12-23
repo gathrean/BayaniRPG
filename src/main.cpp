@@ -3,8 +3,8 @@
 //
 
 #include <SFML/Graphics.hpp>
-#include "src/Window.hpp"
-#include "src/KeyboardInput.hpp"
+#include "Window.hpp"
+#include "KeyboardInput.hpp"
 
 int main() {
     Window mainWindow(1280, 960, "Dungeon Quad");
