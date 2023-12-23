@@ -10,6 +10,7 @@ set(SOURCE_FILES src/main.cpp
         src/Entities/Player.hpp
         src/Entities/Projectile.hpp
         src/Entities/Projectile.cpp
+        src/Entities/Player.cpp
 )
 add_executable(DungeonQuad ${SOURCE_FILES})
 include_directories(/usr/local/include)

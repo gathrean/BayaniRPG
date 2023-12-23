@@ -14,7 +14,7 @@ int main() {
 
     Window &mainWindow = Window::getInstance(width, height, "Dungeon Quad");
     Player player;
-    player.setPosition(sf::Vector2f(100.f, 100.f));
+    player.setPlayerPosition(sf::Vector2f(100.f, 100.f));
 
     float movementSpeed = 0.1f;
 
@@ -27,7 +27,7 @@ int main() {
                 // If the left mouse button is pressed, shoot a projectile
                 sf::Vector2i mousePos = sf::Mouse::getPosition(mainWindow.getWindow());
                 sf::Vector2f worldPos = mainWindow.getWindow().mapPixelToCoords(mousePos);
-                player.shoot(worldPos);
+                player.shootProjectiles(worldPos);
             }
         }
 
