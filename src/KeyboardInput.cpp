@@ -8,17 +8,17 @@ bool KeyboardInput::isKeyPressed(sf::Keyboard::Key key) {
     return sf::Keyboard::isKeyPressed(key);
 }
 
-void KeyboardInput::handleMovement(sf::CircleShape& shape, float movementSpeed) {
+void KeyboardInput::handleMovement(Player& player, float movementSpeed) {
     if (isKeyPressed(sf::Keyboard::A)) {
-        shape.move(-movementSpeed, 0);
+        player.move(-movementSpeed, 0);
     }
     if (isKeyPressed(sf::Keyboard::D)) {
-        shape.move(movementSpeed, 0);
+        player.move(movementSpeed, 0);
     }
     if (isKeyPressed(sf::Keyboard::W)) {
-        shape.move(0, -movementSpeed);
+        player.move(0, -movementSpeed);
     }
     if (isKeyPressed(sf::Keyboard::S)) {
-        shape.move(0, movementSpeed);
+        player.move(0, movementSpeed);
     }
 }

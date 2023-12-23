@@ -5,9 +5,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Player.hpp"
 
 class KeyboardInput {
 public:
     static bool isKeyPressed(sf::Keyboard::Key key);
-    static void handleMovement(sf::CircleShape& shape, float movementSpeed);
+    static void handleMovement(Player& player, float movementSpeed);
 };

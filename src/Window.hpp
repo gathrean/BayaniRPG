@@ -5,9 +5,12 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Player.hpp"
 
 class Window {
 private:
+    sf::RenderWindow window;
+
     // Private constructor to prevent external instantiation
     Window(unsigned int width, unsigned int height, const std::string &title)
             : window(sf::VideoMode(width, height), title, sf::Style::Resize) {}
@@ -15,8 +18,7 @@ private:
     // Draw the checkered background
     void drawCheckeredBackground() {
         constexpr int tileSize = 50; // Size of each tile
-        sf::RectangleShape tile;
-        tile.setSize(sf::Vector2f(tileSize, tileSize));
+        sf::RectangleShape tile(sf::Vector2f(tileSize, tileSize));
 
         bool isWhite = true;
         for (int y = 0; y < window.getSize().y; y += tileSize) {
@@ -30,13 +32,9 @@ private:
         }
     }
 
-    // The window object
-    sf::RenderWindow window;
-
 public:
     // Deleted copy constructor and copy assignment operator
     Window(const Window &) = delete;
-
     Window &operator=(const Window &) = delete;
 
     // Destructor
@@ -70,10 +68,10 @@ public:
         window.close();
     }
 
-    // Draw a drawable object
-    inline void draw(const sf::Drawable &drawable) {
-        drawCheckeredBackground();
-        window.draw(drawable);
+    // Draw a drawable object (in this case, the player)
+    inline void draw(Player player) {
+        drawCheckeredBackground(); // Draw the checkered background
+        player.draw(window); // Draw the player
     }
 
     // Get the window object
