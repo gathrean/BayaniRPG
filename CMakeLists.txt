@@ -7,6 +7,7 @@ set(SOURCE_FILES src/main.cpp
         src/KeyboardInput.hpp
         src/Window.hpp
         src/KeyboardInput.cpp
+        src/Player.hpp
 )
 add_executable(DungeonQuad ${SOURCE_FILES})
 include_directories(/usr/local/include)
