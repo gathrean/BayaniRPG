@@ -5,3 +5,7 @@ This is a recreation of the game [Dungeon QUad](https://github.com/BardiaTiM/pro
 ## How to run
 
 Run `main.cpp` in the `src` folder.
+
+## Setting up SFML
+
+I only have the tutorial on MacOS with CLion (Homebrew) [here](https://dev.to/giovannicodes/sfml-2-5-1-setup-on-macos-with-clion-505m).
