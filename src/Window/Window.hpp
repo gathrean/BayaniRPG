@@ -5,7 +5,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Player.hpp"
+#include "../Entities/Player.hpp"
 
 class Window {
 private:
@@ -48,22 +48,22 @@ public:
         return instance;
     }
 
-    // Check if the window is open
+    // Check if the Window is open
     inline bool isOpen() const {
         return window.isOpen();
     }
 
-    // Clear the window
+    // Clear the Window
     inline void clear() {
         window.clear();
     }
 
-    // Display the window
+    // Display the Window
     inline void display() {
         window.display();
     }
 
-    // Close the window
+    // Close the Window
     inline void close() {
         window.close();
     }
@@ -74,7 +74,7 @@ public:
         player.draw(window); // Draw the player
     }
 
-    // Get the window object
+    // Get the Window object
     inline sf::RenderWindow &getWindow() {
         return window;
     }

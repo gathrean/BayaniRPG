@@ -4,11 +4,12 @@ project(DungeonQuad)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES src/main.cpp
-        src/KeyboardInput.hpp
-        src/Window.hpp
-        src/KeyboardInput.cpp
-        src/Player.hpp
-        src/Projectile.hpp
+        src/Input/KeyboardInput.hpp
+        src/Window/Window.hpp
+        src/Input/KeyboardInput.cpp
+        src/Entities/Player.hpp
+        src/Entities/Projectile.hpp
+        src/Entities/Projectile.cpp
 )
 add_executable(DungeonQuad ${SOURCE_FILES})
 include_directories(/usr/local/include)

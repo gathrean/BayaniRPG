@@ -3,9 +3,9 @@
 //
 
 #include <SFML/Graphics.hpp>
-#include "Window.hpp"
-#include "KeyboardInput.hpp"
-#include "Player.hpp"
+#include "Window/Window.hpp"
+#include "Input/KeyboardInput.hpp"
+#include "Entities/Player.hpp"
 
 int main() {
 

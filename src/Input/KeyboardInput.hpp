@@ -5,7 +5,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Player.hpp"
+#include "../Entities/Player.hpp"
 
 class KeyboardInput {
 public:
