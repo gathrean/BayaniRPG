@@ -7,7 +7,7 @@
 #include "KeyboardInput.hpp"
 
 int main() {
-    Window mainWindow(1280, 960, "Dungeon Quad");
+    Window& mainWindow = Window::getInstance(1280, 960, "Dungeon Quad");
     sf::CircleShape shape;
     shape.setRadius(20.f);
     shape.setPosition(100.f, 100.f);

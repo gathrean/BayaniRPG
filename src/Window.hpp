@@ -7,31 +7,58 @@
 #include <SFML/Graphics.hpp>
 
 class Window {
-
 private:
+    // Private constructor to prevent external instantiation
+    Window(unsigned int width, unsigned int height, const std::string &title)
+            : window(sf::VideoMode(width, height), title, sf::Style::Resize) {}
+
     // The window object
     sf::RenderWindow window;
 
 public:
-    // Constructor
-    Window(unsigned int width, unsigned int height, const std::string &title)
-            : window(sf::VideoMode(width, height), title, sf::Style::Resize) {}
+    // Deleted copy constructor and copy assignment operator
+    Window(const Window &) = delete;
+
+    Window &operator=(const Window &) = delete;
+
+    // Destructor
+    ~Window() {
+        window.close();
+    }
+
+    // Function to get the singleton instance of Window
+    static Window &getInstance(unsigned int width, unsigned int height, const std::string &title) {
+        static Window instance(width, height, title); // Static instance of Window
+        return instance;
+    }
 
     // Check if the window is open
-    bool isOpen() const;
+    inline bool isOpen() const {
+        return window.isOpen();
+    }
 
     // Clear the window
-    void clear();
+    inline void clear() {
+        window.clear();
+    }
 
     // Display the window
-    void display();
+    inline void display() {
+        window.display();
+    }
 
     // Close the window
-    void close();
+    inline void close() {
+        window.close();
+    }
 
     // Draw a drawable object
-    void draw(const sf::Drawable &drawable);
+    inline void draw(const sf::Drawable &drawable) {
+        window.draw(drawable);
+    }
 
     // Get the window object
-    sf::RenderWindow &getWindow();
+    inline sf::RenderWindow &getWindow() {
+        return window;
+    }
 };
