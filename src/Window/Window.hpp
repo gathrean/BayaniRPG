@@ -16,7 +16,7 @@ private:
     sf::Sprite backgroundSprite; // Add a sprite to render the background texture
     sf::View view; // Add a view to the window (for zooming out)
 
-    std::string backgroundFileName = "../media/deepslate.png";
+    std::string backgroundFileName = "../media/deep_slate.jpg";
 
     // Background's positions
     float backgroundX = 0.0f;
