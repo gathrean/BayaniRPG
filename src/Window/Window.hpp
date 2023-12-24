@@ -7,14 +7,20 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "../Entities/Player.hpp"
+#include "../Entities/Enemy.hpp"
 
 class Window {
 
 private:
-    sf::RenderWindow window; // Add a window to render the game
-    sf::Texture backgroundTexture; // Add a texture for the background
-    sf::Sprite backgroundSprite; // Add a sprite to render the background texture
-    sf::View view; // Add a view to the window (for zooming out)
+    sf::RenderWindow window;        // Add a window to render the game
+    sf::Texture backgroundTexture;  // Add a texture for the background
+    sf::Sprite backgroundSprite;    // Add a sprite to render the background texture
+    sf::View view;                  // Add a view to the window (for zooming out)
+    sf::Clock enemySpawnTimer;      // Timer for enemy spawn
+
+    float enemySpawnInterval = 5.0f; // Interval between enemy spawns (in seconds)
+
+    std::vector<Enemy> enemies;     // Vector to store enemies
 
     std::string backgroundFileName = "../media/deep_slate.jpg";
 
@@ -51,6 +57,18 @@ public:
     // Draw the player and projectiles
     // This function is called by drawWindow()
     void drawPlayerAndProjectiles(Player &player);
+
+    // Method to spawn enemies
+    void spawnEnemy(float radius, float moveSpeed, const sf::Vector2f& playerPosition);
+
+    // Method to draw all enemies
+    void drawEnemies();
+
+    // Method to update enemy positions based on the player's position
+    void updateEnemies(Player &player);
+
+    // Method to spawn enemies at intervals
+    void spawnEnemiesAtIntervals();
 
     // Display the window
     inline void displayWindow() {

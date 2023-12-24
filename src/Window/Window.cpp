@@ -77,3 +77,21 @@ void Window::drawPlayerAndProjectiles(Player &player) {
     player.drawProjectiles(window);
     player.updateProjectiles(view);
 }
+
+void Window::spawnEnemy(float radius, float moveSpeed, const sf::Vector2f& playerPosition) {
+    enemies.emplace_back(radius, moveSpeed, playerPosition);
+}
+
+
+void Window::drawEnemies() {
+    for (auto &enemy: enemies) {
+        enemy.drawEnemy(window);
+    }
+}
+
+void Window::updateEnemies(Player &player) {
+    sf::Vector2f playerPos = player.getPlayerPosition();
+    for (auto &enemy: enemies) {
+        enemy.updatePosition(playerPos);
+    }
+}

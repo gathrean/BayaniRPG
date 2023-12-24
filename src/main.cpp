@@ -8,7 +8,6 @@
 #include "Entities/Player.hpp"
 
 int main() {
-
     unsigned int width = 1280;
     unsigned int height = 960;
 
@@ -17,9 +16,15 @@ int main() {
     player.setPlayerPosition(sf::Vector2f(100.f, 100.f));
 
     // Apply the zoom-out effect (e.g., zoom factor of 0.8 for 80% zoom-out)
-    mainWindow.applyZoomOut(1.f);
+    mainWindow.applyZoomOut(1.5f);
 
     float movementSpeed = 0.05f;
+
+    // Initial spawn of enemies
+    mainWindow.spawnEnemy(20.0f, 0.025f, player.getPlayerPosition());
+
+    sf::Clock enemySpawnTimer;
+    float enemySpawnInterval = 5.0f;
 
     while (mainWindow.isWindowOpen()) {
         sf::Event event{};
@@ -36,10 +41,19 @@ int main() {
 
         KeyboardInput::handleMovement(player, movementSpeed);
 
+        mainWindow.updateEnemies(player);
+
+        // Spawn enemies at intervals
+        if (enemySpawnTimer.getElapsedTime().asSeconds() >= enemySpawnInterval) {
+            mainWindow.spawnEnemy(20.0f, 0.025f, player.getPlayerPosition());
+            enemySpawnTimer.restart();
+        }
+
         mainWindow.clearWindowContents();
         player.updateProjectiles(mainWindow.getView());
         mainWindow.drawWindow(player);
         player.drawProjectiles(mainWindow.getWindow());
+        mainWindow.drawEnemies(); // Draw enemies after updating
         mainWindow.displayWindow();
     }
 
