@@ -8,74 +8,41 @@
 #include "../Entities/Player.hpp"
 
 class Window {
+
 private:
     sf::RenderWindow window;
 
-    // Private constructor to prevent external instantiation
+    // Singleton
     Window(unsigned int width, unsigned int height, const std::string &title)
             : window(sf::VideoMode(width, height), title, sf::Style::Resize) {}
 
-    // Draw the checkered background
-    void drawCheckeredBackground() {
-        constexpr int tileSize = 50; // Size of each tile
-        sf::RectangleShape tile(sf::Vector2f(tileSize, tileSize));
-
-        bool isWhite = true;
-        for (int y = 0; y < window.getSize().y; y += tileSize) {
-            isWhite = !isWhite; // Alternate the pattern
-            for (int x = 0; x < window.getSize().x; x += tileSize) {
-                tile.setPosition(static_cast<float>(x), static_cast<float>(y));
-                tile.setFillColor(isWhite ? sf::Color::Blue : sf::Color::Black);
-                window.draw(tile);
-                isWhite = !isWhite; // Switch color for the next tile
-            }
-        }
-    }
+    void drawCheckeredBackground();
 
 public:
-    // Deleted copy constructor and copy assignment operator
-    Window(const Window &) = delete;
-    Window &operator=(const Window &) = delete;
-
-    // Destructor
-    ~Window() {
-        window.close();
-    }
-
-    // Function to get the singleton instance of Window
+    // Singleton instance getter
     static Window &getInstance(unsigned int width, unsigned int height, const std::string &title) {
-        static Window instance(width, height, title); // Static instance of Window
+        static Window instance(width, height, title);
         return instance;
     }
 
-    // Check if the Window is open
-    inline bool isOpen() const {
-        return window.isOpen();
-    }
+    void drawWindow(Player player);
 
-    // Clear the Window
-    inline void clear() {
-        window.clear();
-    }
+    inline void displayWindow() { window.display(); }
 
-    // Display the Window
-    inline void display() {
-        window.display();
-    }
+    inline void clearWindowContents() { window.clear(); }
 
-    // Close the Window
-    inline void close() {
-        window.close();
-    }
+    inline void closeWindow() { window.close(); }
 
-    // Draw a drawable object (in this case, the player)
-    inline void draw(Player player) {
-        drawCheckeredBackground(); // Draw the checkered background
-        player.draw(window); // Draw the player
-    }
+    inline bool isWindowOpen() const { return window.isOpen(); }
 
-    // Get the Window object
-    inline sf::RenderWindow &getWindow() {
-        return window;
-    }
+    inline sf::RenderWindow &getWindow() { return window; }
+
+    // Singleton: deleted copy constructor
+    Window(const Window &) = delete;
+
+    // Singleton: deleted assignment operator
+    Window &operator=(const Window &) = delete;
+
+    // Destructor
+    ~Window() { window.close(); }
 };
