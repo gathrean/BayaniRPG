@@ -11,37 +11,19 @@
 class Window {
 
 private:
-    sf::RenderWindow window;
-
+    sf::RenderWindow window; // Add a window to render the game
     sf::Texture backgroundTexture; // Add a texture for the background
     sf::Sprite backgroundSprite; // Add a sprite to render the background texture
-
-    sf::View view;
+    sf::View view; // Add a view to the window (for zooming out)
 
     std::string backgroundFileName = "../media/deepslate.png";
 
+    // Background's positions
     float backgroundX = 0.0f;
     float backgroundY = 0.0f;
 
     // Singleton
-    Window(unsigned int width, unsigned int height, const std::string &title)
-            : window(sf::VideoMode(width, height), title, sf::Style::Resize) {
-
-        bool isBackgroundLoaded = backgroundTexture.loadFromFile(backgroundFileName);
-
-        if (isBackgroundLoaded) {
-            backgroundSprite.setTexture(backgroundTexture); // Set the texture for the sprite
-        } else {
-            // Handle error when loading the background texture
-            std::cout << "Failed to load background texture!" << std::endl;
-        }
-
-        // Set an initial view for the window
-        view.setSize(static_cast<float>(width), static_cast<float>(height));
-        view.setCenter(static_cast<float>(width) / 2, static_cast<float>(height) / 2);
-        window.setView(view);
-    }
-
+    Window(unsigned int width, unsigned int height, const std::string &title);
 
 public:
     // Singleton instance getter
@@ -50,17 +32,46 @@ public:
         return instance;
     }
 
+    // Handles the logic of drawing the window.
+    // Calls the functions to draw the background, player, and projectiles.
     void drawWindow(Player player);
 
-    inline void displayWindow() { window.display(); }
+    // Update the background position based on the player's position
+    // This function is called by drawWindow()
+    void updateBackgroundPosition(const Player &player);
 
-    inline void clearWindowContents() { window.clear(); }
+    // Draw the tiled background
+    // This function is called by drawWindow()
+    void drawTiledBackground();
 
-    inline void closeWindow() { window.close(); }
+    // Draw the player and projectiles
+    // This function is called by drawWindow()
+    void drawPlayerAndProjectiles(Player &player);
 
-    inline bool isWindowOpen() const { return window.isOpen(); }
+    // Display the window
+    inline void displayWindow() {
+        window.display();
+    }
 
-    inline sf::RenderWindow &getWindow() { return window; }
+    // Clear the window
+    inline void clearWindowContents() {
+        window.clear();
+    }
+
+    // Close the window
+    inline void closeWindow() {
+        window.close();
+    }
+
+    // Check if the window is open
+    inline bool isWindowOpen() const {
+        return window.isOpen();
+    }
+
+    // Getter for the window
+    inline sf::RenderWindow &getWindow() {
+        return window;
+    }
 
     // Singleton: deleted copy constructor
     Window(const Window &) = delete;
