@@ -13,6 +13,6 @@ public:
 
     static bool isKeyPressed(sf::Keyboard::Key key);
 
-    static void handleMovement(Player &player, float movementSpeed);
+    static void handleMovement(Player& player, float movementSpeed);
 
 };

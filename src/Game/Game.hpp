@@ -13,7 +13,7 @@ class Game {
 private:
 
     // Reference to the main window instance (Singleton)
-    Window &mainWindow;
+    Window& mainWindow;
 
     // An instance of the player
     Player player;
@@ -45,7 +45,7 @@ public:
         mainWindow.applyZoomOut(1.5f);
 
         // Start the game with one enemy
-        mainWindow.spawnEnemy(20.0f, 0.025f, player.getPlayerPosition());
+        mainWindow.spawnEnemy(20.0f, 0.025f, player.getPosition());
     }
 
     /**

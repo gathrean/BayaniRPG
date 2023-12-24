@@ -5,26 +5,29 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Entity.hpp"
 
-class Enemy {
+class Enemy : public Entity {
 private:
 
-    sf::CircleShape enemyShape;
+    sf::CircleShape shape;
 
-    sf::Vector2f directionTowardsPlayer; // direction for enemy to follow
+    sf::Vector2f direction; // direction for enemy to follow
 
     float speed;
 
 public:
-    Enemy(float radius, float moveSpeed, const sf::Vector2f &playerPosition);
+    Enemy(float radius, float moveSpeed, const sf::Vector2f& playerPosition);
 
-    void drawEnemy(sf::RenderWindow &window);
+    void draw(sf::RenderWindow& window) override;
 
-    void updatePosition(const sf::Vector2f &playerPosition);
+    void updatePosition(const sf::Vector2f& playerPosition);
 
-    float magnitude(const sf::Vector2f &vector);
+    sf::Vector2f getPosition() const override;
 
-    void normalize(sf::Vector2f &vector);
+    float magnitude(const sf::Vector2f& vector);
+
+    void normalize(sf::Vector2f& vector);
 
 };
 

@@ -29,11 +29,11 @@ private:
     float backgroundY = 0.0f;
 
     // Singleton
-    Window(unsigned int width, unsigned int height, const std::string &title);
+    Window(unsigned int width, unsigned int height, const std::string& title);
 
 public:
     // Singleton instance getter
-    static Window &getInstance(unsigned int width, unsigned int height, const std::string &title) {
+    static Window& getInstance(unsigned int width, unsigned int height, const std::string& title) {
         static Window instance(width, height, title);
         return instance;
     }
@@ -48,7 +48,7 @@ public:
 
     // Update the background position based on the player's position
     // This function is called by drawWindow()
-    void updateBackgroundPosition(const Player &player);
+    void updateBackgroundPosition(const Player& player);
 
     // Draw the tiled background
     // This function is called by drawWindow()
@@ -56,7 +56,7 @@ public:
 
     // Draw the player and projectiles
     // This function is called by drawWindow()
-    void drawPlayerAndProjectiles(Player &player);
+    void drawPlayerAndProjectiles(Player& player);
 
     // Method to spawn enemies
     void spawnEnemy(float radius, float moveSpeed, const sf::Vector2f& playerPosition);
@@ -65,7 +65,7 @@ public:
     void drawEnemies();
 
     // Method to update enemy positions based on the player's position
-    void updateEnemies(Player &player);
+    void updateEnemies(Player& player);
 
     // Method to spawn enemies at intervals
     void spawnEnemiesAtIntervals();
@@ -91,15 +91,15 @@ public:
     }
 
     // Getter for the window
-    inline sf::RenderWindow &getWindow() {
+    inline sf::RenderWindow& getWindow() {
         return window;
     }
 
     // Singleton: deleted copy constructor
-    Window(const Window &) = delete;
+    Window(const Window&) = delete;
 
     // Singleton: deleted assignment operator
-    Window &operator=(const Window &) = delete;
+    Window& operator=(const Window&) = delete;
 
     // Add a method to apply the zoom-out effect
     void applyZoomOut(float factor) {

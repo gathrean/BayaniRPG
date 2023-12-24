@@ -4,7 +4,7 @@
 
 #include "Window.hpp"
 
-Window::Window(unsigned int width, unsigned int height, const std::string &title)
+Window::Window(unsigned int width, unsigned int height, const std::string& title)
         : window(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close) {
 
     bool isBackgroundLoaded = backgroundTexture.loadFromFile(backgroundFileName);
@@ -29,14 +29,14 @@ void Window::drawWindow(Player player) {
     drawTiledBackground();
 
     // Center the view on the player's position
-    view.setCenter(player.getPlayerPosition());
+    view.setCenter(player.getPosition());
     window.setView(view);
 
     drawPlayerAndProjectiles(player);
 }
 
-void Window::updateBackgroundPosition(const Player &player) {
-    sf::Vector2f playerPosition = player.getPlayerPosition();
+void Window::updateBackgroundPosition(const Player& player) {
+    sf::Vector2f playerPosition = player.getPosition();
 
     float offsetX = std::fmod(playerPosition.x, static_cast<float>(backgroundTexture.getSize().x));
     float offsetY = std::fmod(playerPosition.y, static_cast<float>(backgroundTexture.getSize().y));
@@ -72,8 +72,8 @@ void Window::drawTiledBackground() {
     }
 }
 
-void Window::drawPlayerAndProjectiles(Player &player) {
-    player.drawPlayer(window);
+void Window::drawPlayerAndProjectiles(Player& player) {
+    player.draw(window);
     player.drawProjectiles(window);
     player.updateProjectiles(view);
 }
@@ -84,14 +84,14 @@ void Window::spawnEnemy(float radius, float moveSpeed, const sf::Vector2f& playe
 
 
 void Window::drawEnemies() {
-    for (auto &enemy: enemies) {
-        enemy.drawEnemy(window);
+    for (auto& enemy: enemies) {
+        enemy.draw(window);
     }
 }
 
-void Window::updateEnemies(Player &player) {
-    sf::Vector2f playerPos = player.getPlayerPosition();
-    for (auto &enemy: enemies) {
+void Window::updateEnemies(Player& player) {
+    sf::Vector2f playerPos = player.getPosition();
+    for (auto& enemy: enemies) {
         enemy.updatePosition(playerPos);
     }
 }

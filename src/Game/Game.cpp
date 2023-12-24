@@ -34,7 +34,7 @@ void Game::updateGame() {
     mainWindow.updateEnemies(player);
 
     if (enemySpawnTimer.getElapsedTime().asSeconds() >= enemySpawnInterval) {
-        mainWindow.spawnEnemy(20.0f, 0.025f, player.getPlayerPosition());
+        mainWindow.spawnEnemy(20.0f, 0.025f, player.getPosition());
         enemySpawnTimer.restart();
     }
 

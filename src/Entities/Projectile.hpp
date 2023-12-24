@@ -5,9 +5,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Entity.hpp"
 
-class Projectile {
-
+class Projectile : public Entity {
 private:
     sf::CircleShape projectile;
 
@@ -24,11 +24,11 @@ public:
 
     void updateProjectile();
 
-    void drawProjectile(sf::RenderWindow &window);
+    void draw(sf::RenderWindow& window) override;
 
     // Getters and Setters
 
-    sf::Vector2f getPosition() const;
+    sf::Vector2f getPosition() const override;
 
     void setPosition(sf::Vector2f position);
 

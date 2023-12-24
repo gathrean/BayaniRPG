@@ -13,7 +13,7 @@ void Projectile::updateProjectile() {
     projectile.move(velocity);
 }
 
-void Projectile::drawProjectile(sf::RenderWindow &window) {
+void Projectile::draw(sf::RenderWindow& window) {
     window.draw(projectile);
 }
 

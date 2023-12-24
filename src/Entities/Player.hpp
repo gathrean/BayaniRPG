@@ -6,8 +6,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "Projectile.hpp"
+#include "Entity.hpp"
 
-class Player {
+class Player : public Entity {
 
 private:
 
@@ -25,13 +26,13 @@ public:
 
     Player();
 
-    ~Player() = default;
+    ~Player() override = default;
 
     // Drawing methods
 
-    void drawPlayer(sf::RenderWindow &window);
+    void draw(sf::RenderWindow& window) override;
 
-    void drawProjectiles(sf::RenderWindow &window);
+    void drawProjectiles(sf::RenderWindow& window);
 
     // Player Position-related methods
 
@@ -39,7 +40,7 @@ public:
 
     void setPlayerPosition(sf::Vector2f position);
 
-    sf::Vector2f getPlayerPosition() const;
+    sf::Vector2f getPosition() const override;
 
     // Direction-related methods
     void setDirection(float x, float y);

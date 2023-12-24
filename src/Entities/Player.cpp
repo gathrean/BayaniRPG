@@ -9,7 +9,7 @@ Player::Player() {
     playerShape.setFillColor(sf::Color::Cyan);
 }
 
-void Player::drawPlayer(sf::RenderWindow &window) {
+void Player::draw(sf::RenderWindow& window) {
     window.draw(playerShape);
 }
 
@@ -21,7 +21,7 @@ void Player::setPlayerPosition(sf::Vector2f position) {
     playerShape.setPosition(position);
 }
 
-sf::Vector2f Player::getPlayerPosition() const {
+sf::Vector2f Player::getPosition() const {
     return playerShape.getPosition();
 }
 
@@ -77,9 +77,9 @@ void Player::updateProjectiles(const sf::View& view) {
     }
 }
 
-void Player::drawProjectiles(sf::RenderWindow &window) {
+void Player::drawProjectiles(sf::RenderWindow& window) {
     for (Projectile projectile: playerProjectiles) {
-        projectile.drawProjectile(window);
+        projectile.draw(window);
     }
 }
 
