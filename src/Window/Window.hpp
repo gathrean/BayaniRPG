@@ -32,6 +32,10 @@ public:
         return instance;
     }
 
+    inline sf::View getView() {
+        return view;
+    }
+
     // Handles the logic of drawing the window.
     // Calls the functions to draw the background, player, and projectiles.
     void drawWindow(Player player);

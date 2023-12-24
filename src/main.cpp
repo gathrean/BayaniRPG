@@ -37,7 +37,7 @@ int main() {
         KeyboardInput::handleMovement(player, movementSpeed);
 
         mainWindow.clearWindowContents();
-        player.updateProjectiles(width, height);
+        player.updateProjectiles(mainWindow.getView());
         mainWindow.drawWindow(player);
         player.drawProjectiles(mainWindow.getWindow());
         mainWindow.displayWindow();

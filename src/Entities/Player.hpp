@@ -50,5 +50,5 @@ public:
 
     void shootProjectiles(sf::Vector2f target);
 
-    void updateProjectiles(unsigned int windowWidth, unsigned int windowHeight);
+    void updateProjectiles(const sf::View& view);
 };

@@ -75,5 +75,5 @@ void Window::drawTiledBackground() {
 void Window::drawPlayerAndProjectiles(Player &player) {
     player.drawPlayer(window);
     player.drawProjectiles(window);
-    player.updateProjectiles(window.getSize().x, window.getSize().y);
+    player.updateProjectiles(view);
 }

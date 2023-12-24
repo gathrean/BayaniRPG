@@ -48,9 +48,15 @@ void Player::shootProjectiles(sf::Vector2f target) {
     playerProjectiles.push_back(projectile);
 }
 
-void Player::updateProjectiles(unsigned int windowWidth, unsigned int windowHeight) {
-    auto floatWindowWidth = static_cast<float>(windowWidth);
-    auto floatWindowHeight = static_cast<float>(windowHeight);
+void Player::updateProjectiles(const sf::View& view) {
+    sf::Vector2f viewCenter = view.getCenter();
+    sf::Vector2f viewSize = view.getSize();
+
+    // Calculate view boundaries
+    float left = viewCenter.x - viewSize.x / 2.0f;
+    float right = viewCenter.x + viewSize.x / 2.0f;
+    float top = viewCenter.y - viewSize.y / 2.0f;
+    float bottom = viewCenter.y + viewSize.y / 2.0f;
 
     auto it = playerProjectiles.begin();
 
@@ -60,8 +66,8 @@ void Player::updateProjectiles(unsigned int windowWidth, unsigned int windowHeig
 
         sf::Vector2f projPos = it->getPosition();
 
-        bool outOfBoundsX = (projPos.x < 0) || (projPos.x > floatWindowWidth);
-        bool outOfBoundsY = (projPos.y < 0) || (projPos.y > floatWindowHeight);
+        bool outOfBoundsX = (projPos.x < left) || (projPos.x > right);
+        bool outOfBoundsY = (projPos.y < top) || (projPos.y > bottom);
 
         if (outOfBoundsX || outOfBoundsY) {
             it = playerProjectiles.erase(it);
