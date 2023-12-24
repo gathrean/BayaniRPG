@@ -18,11 +18,11 @@ int main() {
 
     float movementSpeed = 0.1f;
 
-    while (mainWindow.isOpen()) {
+    while (mainWindow.isWindowOpen()) {
         sf::Event event{};
         while (mainWindow.getWindow().pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                mainWindow.close();
+                mainWindow.closeWindow();
             else if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
                 // If the left mouse button is pressed, shoot a projectile
                 sf::Vector2i mousePos = sf::Mouse::getPosition(mainWindow.getWindow());
@@ -33,11 +33,11 @@ int main() {
 
         KeyboardInput::handleMovement(player, movementSpeed);
 
-        mainWindow.clear();
+        mainWindow.clearWindowContents();
         player.updateProjectiles(width, height);
-        mainWindow.draw(player);
+        mainWindow.drawWindow(player);
         player.drawProjectiles(mainWindow.getWindow());
-        mainWindow.display();
+        mainWindow.displayWindow();
     }
 
     return 0;
