@@ -12,6 +12,12 @@ void Game::run() {
     }
 }
 
+void Game::handleMouseClick() {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(mainWindow.getWindow());
+    sf::Vector2f worldPos = mainWindow.getWindow().mapPixelToCoords(mousePos);
+    player.shootProjectiles(worldPos);
+}
+
 void Game::handleEvents() {
     sf::Event event{};
     while (mainWindow.getWindow().pollEvent(event)) {
@@ -22,12 +28,6 @@ void Game::handleEvents() {
         }
     }
     KeyboardInput::handleMovement(player, movementSpeed);
-}
-
-void Game::handleMouseClick() {
-    sf::Vector2i mousePos = sf::Mouse::getPosition(mainWindow.getWindow());
-    sf::Vector2f worldPos = mainWindow.getWindow().mapPixelToCoords(mousePos);
-    player.shootProjectiles(worldPos);
 }
 
 void Game::updateGame() {
