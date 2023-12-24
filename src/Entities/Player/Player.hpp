@@ -36,6 +36,8 @@ public:
     // Drawing methods
 
     void draw(sf::RenderWindow& window) override;
+    
+    void drawHealthBar(sf::RenderWindow& window);
 
     void drawProjectiles(sf::RenderWindow& window);
 
@@ -57,6 +59,8 @@ public:
     void shootProjectiles(sf::Vector2f target);
 
     void updateProjectiles(const sf::View& view);
+    
+    void calculateViewBoundaries(sf::Vector2f viewCenter, sf::Vector2f viewSize);
 
     void setMaxHealth(float maxHealth);
 
