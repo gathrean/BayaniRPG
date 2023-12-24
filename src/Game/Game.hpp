@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Window/Window.hpp"
 #include "../Input/KeyboardInput.hpp"
-#include "../Entities/Player.hpp"
+#include "../Entities/Player/Player.hpp"
 
 class Game {
 private:

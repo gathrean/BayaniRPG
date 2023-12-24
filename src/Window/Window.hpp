@@ -6,8 +6,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "../Entities/Player.hpp"
-#include "../Entities/Enemy.hpp"
+#include "../Entities/Player/Player.hpp"
+#include "../Entities/Enemy/Enemy.hpp"
 
 class Window {
 

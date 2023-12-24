@@ -5,7 +5,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Entity.hpp"
+#include "../Entity.hpp"
 
 class Projectile : public Entity {
 private:

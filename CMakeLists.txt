@@ -7,13 +7,13 @@ set(SOURCE_FILES src/main.cpp
         src/Input/KeyboardInput.hpp
         src/Window/Window.hpp
         src/Input/KeyboardInput.cpp
-        src/Entities/Player.hpp
-        src/Entities/Projectile.hpp
-        src/Entities/Projectile.cpp
-        src/Entities/Player.cpp
+        src/Entities/Player/Player.hpp
+        src/Entities/Projectile/Projectile.hpp
+        src/Entities/Projectile/Projectile.cpp
+        src/Entities/Player/Player.cpp
         src/Window/Window.cpp
-        src/Entities/Enemy.hpp
-        src/Entities/Enemy.cpp
+        src/Entities/Enemy/Enemy.hpp
+        src/Entities/Enemy/Enemy.cpp
         src/Game/Game.hpp
         src/Game/Game.cpp
         src/Entities/Entity.hpp

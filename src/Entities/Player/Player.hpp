@@ -5,8 +5,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Projectile.hpp"
-#include "Entity.hpp"
+#include "../Projectile/Projectile.hpp"
+#include "../Entity.hpp"
 
 class Player : public Entity {
 
