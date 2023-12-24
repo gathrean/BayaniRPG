@@ -76,3 +76,12 @@ void Player::drawProjectiles(sf::RenderWindow &window) {
         projectile.drawProjectile(window);
     }
 }
+
+void Player::setDirection(float x, float y) {
+    direction.x = x;
+    direction.y = y;
+}
+
+sf::Vector2f Player::getDirection() const {
+    return direction;
+}

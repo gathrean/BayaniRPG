@@ -17,6 +17,8 @@ private:
 
     std::vector<Projectile> playerProjectiles;
 
+    sf::Vector2f direction;
+
 public:
 
     // Constructor and Destructor
@@ -38,6 +40,11 @@ public:
     void setPlayerPosition(sf::Vector2f position);
 
     sf::Vector2f getPlayerPosition() const;
+
+    // Direction-related methods
+    void setDirection(float x, float y);
+
+    sf::Vector2f getDirection() const;
 
     // Projectile-related methods
 
