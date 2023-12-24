@@ -56,7 +56,7 @@ void Player::updateProjectiles(unsigned int windowWidth, unsigned int windowHeig
 
     // While the iterator hasn't reached the end of the vector
     while (it != playerProjectiles.end()) {
-        it->update();
+        it->updateProjectile();
 
         sf::Vector2f projPos = it->getPosition();
 
@@ -73,6 +73,6 @@ void Player::updateProjectiles(unsigned int windowWidth, unsigned int windowHeig
 
 void Player::drawProjectiles(sf::RenderWindow &window) {
     for (Projectile projectile: playerProjectiles) {
-        projectile.draw(window);
+        projectile.drawProjectile(window);
     }
 }
