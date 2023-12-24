@@ -7,23 +7,16 @@
 void Window::drawWindow(Player player) {
     window.clear();
 
-    // Update background position based on player direction
-    backgroundX -= player.getDirection().x;
-    backgroundY -= player.getDirection().y;
+    // Update background position based on player position
+    sf::Vector2f playerPosition = player.getPlayerPosition();
 
-    unsigned int textureWidth = backgroundTexture.getSize().x;
-    unsigned int textureHeight = backgroundTexture.getSize().y;
+    // Calculate the offset for tiling the background
+    float offsetX = std::fmod(playerPosition.x, static_cast<float>(backgroundTexture.getSize().x));
+    float offsetY = std::fmod(playerPosition.y, static_cast<float>(backgroundTexture.getSize().y));
 
-    // Tile the background image
-    int offsetX = static_cast<int>(std::fmod(backgroundX, textureWidth));
-    int offsetY = static_cast<int>(std::fmod(backgroundY, textureHeight));
-
-    unsigned int windowWidth = window.getSize().x;
-    unsigned int windowHeight = window.getSize().y;
-
-    // Draw the tiled background image in both directions for a seamless effect
-    for (unsigned int x = offsetX; x < windowWidth; x += textureWidth) {
-        for (unsigned int y = offsetY; y < windowHeight; y += textureHeight) {
+    // Draw the tiled background
+    for (float y = -offsetY; y < window.getSize().y; y += backgroundTexture.getSize().y) {
+        for (float x = -offsetX; x < window.getSize().x; x += backgroundTexture.getSize().x) {
             backgroundSprite.setPosition(x, y);
             window.draw(backgroundSprite);
         }
@@ -31,4 +24,8 @@ void Window::drawWindow(Player player) {
 
     // Draw the player on top of the background
     player.drawPlayer(window);
+    player.drawProjectiles(window);
+
+    // Update and draw projectiles
+    player.updateProjectiles(window.getSize().x, window.getSize().y);
 }

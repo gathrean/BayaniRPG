@@ -16,7 +16,9 @@ private:
     sf::Texture backgroundTexture; // Add a texture for the background
     sf::Sprite backgroundSprite; // Add a sprite to render the background texture
 
-    std::string backgroundFileName = "../media/deep_slate.jpg";
+    sf::View view;
+
+    std::string backgroundFileName = "../media/deepslate.png";
 
     float backgroundX = 0.0f;
     float backgroundY = 0.0f;
@@ -33,6 +35,11 @@ private:
             // Handle error when loading the background texture
             std::cout << "Failed to load background texture!" << std::endl;
         }
+
+        // Set an initial view for the window
+        view.setSize(static_cast<float>(width), static_cast<float>(height));
+        view.setCenter(static_cast<float>(width) / 2, static_cast<float>(height) / 2);
+        window.setView(view);
     }
 
 
@@ -60,6 +67,13 @@ public:
 
     // Singleton: deleted assignment operator
     Window &operator=(const Window &) = delete;
+
+    // Add a method to apply the zoom-out effect
+    void applyZoomOut(float factor) {
+        sf::Vector2f newSize = view.getSize() * factor;
+        view.setSize(newSize);
+        window.setView(view);
+    }
 
     // Destructor
     ~Window() { window.close(); }
