@@ -33,7 +33,7 @@ public:
      * Constructor
      */
     Game()
-            : mainWindow(Window::getInstance(1280, 960, "Dungeon Quad")),
+            : mainWindow(Window::getInstance(1200, 800, "Dungeon Quad")),
               player(),
               movementSpeed(0.05f),
               enemySpawnInterval(5.0f) {

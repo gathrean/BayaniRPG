@@ -54,7 +54,7 @@ void Window::drawTiledBackground() {
     int tilesY = static_cast<int>(std::ceil(window.getSize().y / static_cast<float>(textureSize.y)));
 
     // Extend the rendering area in both directions
-    int extendX = 8; // Adjust this value to increase the number of tiles rendered horizontally
+    int extendX = 12; // Adjust this value to increase the number of tiles rendered horizontally
     int extendY = 8; // Adjust this value to increase the number of tiles rendered vertically
 
     // Calculate the starting point for rendering the tiles
