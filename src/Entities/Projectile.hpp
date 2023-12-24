@@ -7,33 +7,31 @@
 #include <SFML/Graphics.hpp>
 
 class Projectile {
+
 private:
-    sf::CircleShape shape;
+    sf::CircleShape projectile;
+
     sf::Vector2f velocity;
 
+    float projectileRadius = 5.0f;
+
 public:
-    Projectile(float radius = 5.f) {
-        shape.setRadius(radius);
-        shape.setFillColor(sf::Color::Red);
-    }
 
-    sf::Vector2f getPosition() const {
-        return shape.getPosition();
-    }
+    // Constructor
+    Projectile();
 
-    void setPosition(sf::Vector2f position) {
-        shape.setPosition(position);
-    }
+    // Methods
 
-    void setVelocity(sf::Vector2f vel) {
-        velocity = vel;
-    }
+    void updateProjectile();
 
-    void update() {
-        shape.move(velocity);
-    }
+    void drawProjectile(sf::RenderWindow &window);
 
-    void draw(sf::RenderWindow &window) {
-        window.draw(shape);
-    }
+    // Getters and Setters
+
+    sf::Vector2f getPosition() const;
+
+    void setPosition(sf::Vector2f position);
+
+    void setVelocity(sf::Vector2f vel);
+
 };
