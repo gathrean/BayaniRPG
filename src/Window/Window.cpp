@@ -4,23 +4,25 @@
 
 #include "Window.hpp"
 
-void Window::drawCheckeredBackground() {
-    constexpr int tileSize = 50; // Size of each tile
-    sf::RectangleShape tile(sf::Vector2f(tileSize, tileSize));
+void Window::drawWindow(Player player) {
+    window.clear();
 
-    bool isWhite = true;
-    for (int y = 0; y < window.getSize().y; y += tileSize) {
-        isWhite = !isWhite; // Alternate the pattern
-        for (int x = 0; x < window.getSize().x; x += tileSize) {
-            tile.setPosition(static_cast<float>(x), static_cast<float>(y));
-            tile.setFillColor(isWhite ? sf::Color::Blue : sf::Color::Black);
-            window.draw(tile);
-            isWhite = !isWhite; // Switch color for the next tile
+    // Update background position based on player direction
+    backgroundX -= player.getDirection().x;
+    backgroundY -= player.getDirection().y;
+
+    // Tile the background image
+    int offsetX = static_cast<int>(std::fmod(backgroundX, backgroundTexture.getSize().x));
+    int offsetY = static_cast<int>(std::fmod(backgroundY, backgroundTexture.getSize().y));
+
+    // Draw the tiled background image in both directions for a seamless effect
+    for (int x = offsetX; x < window.getSize().x; x += backgroundTexture.getSize().x) {
+        for (int y = offsetY; y < window.getSize().y; y += backgroundTexture.getSize().y) {
+            backgroundSprite.setPosition(x, y);
+            window.draw(backgroundSprite);
         }
     }
-}
 
-void Window::drawWindow(Player player) {
-    drawCheckeredBackground(); // Draw the checkered background
-    player.drawPlayer(window); // Draw the player
+    // Draw the player on top of the background
+    player.drawPlayer(window);
 }
