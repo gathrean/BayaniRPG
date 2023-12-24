@@ -5,25 +5,37 @@
 #include "Enemy.hpp"
 
 Enemy::Enemy(float radius, float moveSpeed, const sf::Vector2f& playerPosition)
-        : speed(moveSpeed) {
+        : speed(moveSpeed),
+          direction(playerPosition - sf::Vector2f(500.f, 500.f)),
+          healthBar(60.0f, 10.0f, sf::Color::Red) {
+
     shape.setRadius(radius);
-    shape.setFillColor(sf::Color::Red);
+    shape.setFillColor(sf::Color::Magenta);
 
     // Calculate the initial position outside the view (e.g., 500 pixels away from the player's position)
-    sf::Vector2f direction = playerPosition - sf::Vector2f(500.f, 500.f); // Example offset
+    shape.setPosition(playerPosition + direction);
 
-    // Normalize the direction vector
-    float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
-    if (magnitude != 0) {
-        direction /= magnitude;
-    }
-
-    // Set the enemy's position outside the view by a distance (e.g., 500 pixels away from the player)
-    shape.setPosition(playerPosition + direction * 500.f);
+    // Set max health and current health for the enemy
+    healthBar.setMaxHealth(5.0f);
+    healthBar.setCurrentHealth(5.0f);
 }
 
 void Enemy::draw(sf::RenderWindow& window) {
     window.draw(shape);
+
+// Calculate the position for the health bar below the player
+    sf::Vector2f healthBarPosition = shape.getPosition();
+    // Calculate the adjustment to center the health bar
+    float healthBarOffsetX = (shape.getGlobalBounds().width - healthBar.bar.getSize().x) / 2.0f;
+    float healthBarOffsetY = shape.getRadius() * 2.25f;
+    healthBarPosition.x += healthBarOffsetX;
+    healthBarPosition.y += healthBarOffsetY;
+
+    // Set the position of the health bar
+    healthBar.setPosition(healthBarPosition);
+
+    // Draw the health bar for the player
+    healthBar.draw(window);
 }
 
 void Enemy::updatePosition(const sf::Vector2f& playerPosition) {
@@ -53,4 +65,12 @@ void Enemy::normalize(sf::Vector2f& vector) {
     if (vecMagnitude != 0) {
         vector /= vecMagnitude;
     }
+}
+
+void Enemy::setMaxHealth(float maxHealth) {
+    healthBar.setMaxHealth(maxHealth);
+}
+
+void Enemy::setCurrentHealth(float currentHealth) {
+    healthBar.setCurrentHealth(currentHealth);
 }

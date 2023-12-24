@@ -4,7 +4,7 @@
 
 #include "HealthBar.hpp"
 
-HealthBar::HealthBar(float width, float height) {
+HealthBar::HealthBar(float width, float height, sf::Color fillColor) {
     this->bar.setSize(sf::Vector2f(width, height));
     this->outline.setSize(sf::Vector2f(width, height));
     this->outline.setFillColor(sf::Color::Transparent);
@@ -12,6 +12,9 @@ HealthBar::HealthBar(float width, float height) {
     this->outline.setOutlineThickness(1.0f);
     this->maxWidth = width;
     this->currentHealth = 100.0f;
+
+    // Set the fill color for the health bar
+    this->bar.setFillColor(fillColor);
 }
 
 void HealthBar::setPosition(const sf::Vector2f& position) {

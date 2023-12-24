@@ -10,7 +10,6 @@ class HealthBar {
 
 private:
 
-    sf::RectangleShape bar;
     sf::RectangleShape outline;
 
     float maxWidth;
@@ -19,7 +18,7 @@ private:
 
 public:
 
-    HealthBar(float width, float height);
+    HealthBar(float width, float height, sf::Color fillColor);
 
     void setPosition(const sf::Vector2f& position);
 
@@ -30,5 +29,7 @@ public:
     void update();
 
     void draw(sf::RenderWindow& window);
+
+    sf::RectangleShape bar;
 };
 

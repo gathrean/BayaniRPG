@@ -7,18 +7,23 @@
 #include <SFML/Graphics.hpp>
 #include "../Projectile/Projectile.hpp"
 #include "../Entity.hpp"
+#include "../HealthBar/HealthBar.hpp"
 
 class Player : public Entity {
 
 private:
 
-    float playerRadius = 20.f;
+    float playerRadius = 50.f;
 
-    sf::CircleShape playerShape;
+    sf::CircleShape shape;
 
     std::vector<Projectile> playerProjectiles;
 
     sf::Vector2f direction;
+
+protected:
+
+    HealthBar healthBar;
 
 public:
 
@@ -52,4 +57,8 @@ public:
     void shootProjectiles(sf::Vector2f target);
 
     void updateProjectiles(const sf::View& view);
+
+    void setMaxHealth(float maxHealth);
+
+    void setCurrentHealth(float currentHealth);
 };
