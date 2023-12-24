@@ -9,6 +9,20 @@
 #include "../Input/KeyboardInput.hpp"
 #include "../Entities/Player/Player.hpp"
 
+/**
+ * Constants namespace
+ */
+namespace Constants {
+    const std::string WINDOW_TITLE = "Dungeon Quad";
+    static constexpr unsigned int WINDOW_WIDTH = 1200;
+    static constexpr unsigned int WINDOW_HEIGHT = 800;
+    static constexpr float PLAYER_MOVEMENT_SPEED = 0.05f;
+    static constexpr float ENEMY_SPAWN_INTERVAL = 5.0f;
+}
+
+/**
+ * Game class
+ */
 class Game {
 private:
 
@@ -32,11 +46,10 @@ public:
     /**
      * Constructor
      */
-    Game()
-            : mainWindow(Window::getInstance(1200, 800, "Dungeon Quad")),
-              player(),
-              movementSpeed(0.05f),
-              enemySpawnInterval(5.0f) {
+    Game() : mainWindow(Window::getInstance(Constants::WINDOW_WIDTH, Constants::WINDOW_HEIGHT, Constants::WINDOW_TITLE)),
+             player(),
+             movementSpeed(Constants::PLAYER_MOVEMENT_SPEED),
+             enemySpawnInterval(Constants::ENEMY_SPAWN_INTERVAL) {
 
         // Initial player position
         player.setPlayerPosition(sf::Vector2f(100.f, 100.f));
