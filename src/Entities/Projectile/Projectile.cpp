@@ -6,7 +6,7 @@
 
 Projectile::Projectile() {
     projectile.setRadius(projectileRadius);
-    projectile.setFillColor(sf::Color::Red);
+    projectile.setFillColor(sf::Color::Cyan);
 }
 
 void Projectile::updateProjectile() {
