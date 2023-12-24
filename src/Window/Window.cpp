@@ -5,7 +5,7 @@
 #include "Window.hpp"
 
 Window::Window(unsigned int width, unsigned int height, const std::string &title)
-        : window(sf::VideoMode(width, height), title, sf::Style::Resize) {
+        : window(sf::VideoMode(width, height), title, sf::Style::Titlebar | sf::Style::Close) {
 
     bool isBackgroundLoaded = backgroundTexture.loadFromFile(backgroundFileName);
 
@@ -27,6 +27,11 @@ void Window::drawWindow(Player player) {
 
     updateBackgroundPosition(player);
     drawTiledBackground();
+
+    // Center the view on the player's position
+    view.setCenter(player.getPlayerPosition());
+    window.setView(view);
+
     drawPlayerAndProjectiles(player);
 }
 
