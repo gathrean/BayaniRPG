@@ -17,9 +17,9 @@ int main() {
     player.setPlayerPosition(sf::Vector2f(100.f, 100.f));
 
     // Apply the zoom-out effect (e.g., zoom factor of 0.8 for 80% zoom-out)
-    mainWindow.applyZoomOut(3.f);
+    mainWindow.applyZoomOut(2.f);
 
-    float movementSpeed = 0.025f;
+    float movementSpeed = 0.25f;
 
     while (mainWindow.isWindowOpen()) {
         sf::Event event{};

@@ -42,9 +42,26 @@ void Window::updateBackgroundPosition(const Player &player) {
 }
 
 void Window::drawTiledBackground() {
-    for (float y = backgroundY; y < window.getSize().y; y += backgroundTexture.getSize().y) {
-        for (float x = backgroundX; x < window.getSize().x; x += backgroundTexture.getSize().x) {
-            backgroundSprite.setPosition(x, y);
+    sf::Vector2u textureSize = backgroundTexture.getSize();
+
+    // Calculate the number of tiles needed to cover an extended area
+    int tilesX = static_cast<int>(std::ceil(window.getSize().x / static_cast<float>(textureSize.x)));
+    int tilesY = static_cast<int>(std::ceil(window.getSize().y / static_cast<float>(textureSize.y)));
+
+    // Extend the rendering area in both directions
+    int extendX = 8; // Adjust this value to increase the number of tiles rendered horizontally
+    int extendY = 8; // Adjust this value to increase the number of tiles rendered vertically
+
+    // Calculate the starting point for rendering the tiles
+    float startX = backgroundX - extendX * textureSize.x;
+    float startY = backgroundY - extendY * textureSize.y;
+
+    for (int y = 0; y < tilesY + extendY * 2; ++y) {
+        for (int x = 0; x < tilesX + extendX * 2; ++x) {
+            float xPos = startX + x * textureSize.x;
+            float yPos = startY + y * textureSize.y;
+
+            backgroundSprite.setPosition(xPos, yPos);
             window.draw(backgroundSprite);
         }
     }
