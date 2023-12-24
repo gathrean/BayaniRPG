@@ -14,6 +14,8 @@ set(SOURCE_FILES src/main.cpp
         src/Window/Window.cpp
         src/Entities/Enemy.hpp
         src/Entities/Enemy.cpp
+        src/Game/Game.hpp
+        src/Game/Game.cpp
 )
 add_executable(DungeonQuad ${SOURCE_FILES})
 include_directories(/usr/local/include)
