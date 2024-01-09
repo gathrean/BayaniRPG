@@ -9,27 +9,37 @@
 class HealthBar {
 
 private:
-
+    
+    // The outline of the health bar
     sf::RectangleShape outline;
-
+    
+    // The fill of the health bar
     float maxWidth;
-
+    
+    // The current health of the entity
     float currentHealth;
 
 public:
-
-    HealthBar(float width, float height, sf::Color fillColor);
-
-    void setPosition(const sf::Vector2f& position);
-
-    void setMaxHealth(float maxHealth);
-
-    void setCurrentHealth(float currentHealth);
-
-    void update();
-
-    void draw(sf::RenderWindow& window);
-
+    
+    // The bar of the health bar
     sf::RectangleShape bar;
+    
+    // Constructor
+    HealthBar(float width, float height, sf::Color fillColor);
+    
+    // Draw the health bar
+    void draw(sf::RenderWindow& window);
+    
+    // Update the health bar
+    void update();
+    
+    // Set the position of the health bar
+    void setPosition(const sf::Vector2f& position);
+    
+    // Set the maximum health of the entity
+    void setMaxHealth(float maxHealth);
+    
+    // Set the current health of the entity
+    void setCurrentHealth(float currentHealth);
 };
 

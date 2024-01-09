@@ -12,21 +12,13 @@
 class Entity {
 public:
 
-    /**
-     * Draws the entity to the window.
-     * @param window - A reference to the window to draw to.
-     */
+    // Draws the entity to the window.
     virtual void draw(sf::RenderWindow& window) = 0;
 
-    /**
-     * Gets the position of the entity.
-     * @return - The position of the entity using SFML's Vector2f.
-     */
+    // Updates the entity.
     virtual sf::Vector2f getPosition() const = 0;
 
-    /**
-     * Virtual destructor for the Entity class.
-     */
+    // Destructor for the entity.
     virtual ~Entity() = default;
 };
 
