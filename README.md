@@ -1,6 +1,8 @@
-# Dungeon Quad (C++)
+# Bayani RPG
 
-This is a recreation of the game [Dungeon Quad](https://github.com/BardiaTiM/project-dungeon-quad), originally written in Java, in C++.
+At first, this project aimed to recreate the essence of [Dungeon Quad](https://github.com/BardiaTiM/project-dungeon-quad), a game originally coded in Java, but took a different direction.
+
+Instead of a side-scroller game where the enemies spawn and shoot at the player, this game is a semi open-world game where the player can roam freely while enemies follow the player and attack when in range.
 
 ## How to run
 
